@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meus Picks — Andrea Ramos</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:     #0F0F0F;
+  --mid:     #444;
+  --soft:    #888;
+  --bg:      #F9F7F4;
+  --white:   #FFFFFF;
+  --ali:     #FF4747;
+  --ali-d:   #CC2222;
+  --ali-l:   #FFF0F0;
+  --orange:  #FF7A00;
+  --orng-l:  #FFF3E8;
+  --yellow:  #FFD000;
+  --yel-l:   #FFFBE6;
+  --border:  rgba(0,0,0,0.08);
+  --shadow:  0 2px 16px rgba(0,0,0,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+
+/* ── AVISO TOPO ── */
+.aviso{
+  background:var(--ink);color:rgba(255,255,255,0.7);
+  text-align:center;padding:9px 16px;font-size:11px;
+  letter-spacing:.04em;line-height:1.5;
+}
+.aviso strong{color:#fff}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 1px 8px rgba(0,0,0,0.05);
+}
+.nav-logo{
+  font-family:'Syne',sans-serif;font-size:17px;font-weight:800;
+  color:var(--ink);letter-spacing:-.02em;
+}
+.nav-logo span{color:var(--ali)}
+.nav-tag{
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--soft);
+}
+
+/* ── HERO ── */
+.hero{
+  max-width:480px;margin:0 auto;
+  padding:20px 20px 14px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-icon{font-size:36px;flex-shrink:0}
+.hero-text{flex:1}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ali);background:var(--ali-l);
+  padding:3px 10px;border-radius:50px;margin-bottom:5px;
+}
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(17px,4.5vw,22px);font-weight:800;
+  line-height:1.15;letter-spacing:-.02em;
+}
+.hero h1 em{font-style:normal;color:var(--ali)}
+.hero-sub{
+  font-size:12px;color:var(--soft);line-height:1.55;font-weight:300;margin-top:4px;
+}
+
+/* ── CUPONS ── */
+.cupons-section{max-width:480px;margin:0 auto;padding:24px 20px 8px}
+.cupons-title{
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft);
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.cupons-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.cupons-scroll{
+  display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.cupons-scroll::-webkit-scrollbar{display:none}
+.cupon{
+  flex-shrink:0;
+  background:var(--white);
+  border:1.5px dashed rgba(255,71,71,.35);
+  border-radius:12px;padding:12px 14px;min-width:130px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cupon::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--ali),var(--orange));
+}
+.cupon-off{
+  font-family:'Syne',sans-serif;font-size:16px;font-weight:800;
+  color:var(--ali);line-height:1;margin-bottom:2px;
+}
+.cupon-min{font-size:10px;color:var(--soft);font-weight:400;margin-bottom:8px}
+.cupon-code{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--ink);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.08em;
+  padding:4px 10px;border-radius:6px;cursor:pointer;
+  transition:background .2s;user-select:all;
+}
+.cupon-code:hover{background:var(--ali)}
+.cupon-copy{font-size:10px;opacity:.6}
+
+/* ── DIVISOR ── */
+.divider{
+  max-width:480px;margin:28px auto 0;padding:0 20px;
+  display:flex;align-items:center;gap:12px;
+}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-text{
+  font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--soft);white-space:nowrap;
+}
+
+/* ── PRODUTOS ── */
+.produtos{max-width:480px;margin:0 auto;padding:20px 20px 40px}
+.produto-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;margin-bottom:12px;overflow:hidden;
+  display:flex;align-items:stretch;
+  box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;
+}
+.produto-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.10)}
+.produto-foto{
+  width:90px;min-width:90px;height:90px;
+  background:var(--bg);overflow:hidden;flex-shrink:0;
+}
+.produto-foto img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+}
+.produto-foto-ph{
+  width:100%;height:100%;min-height:110px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;background:linear-gradient(135deg,#FFF0F0,#FFF3E8);
+}
+.produto-body{flex:1;padding:14px 14px 14px 16px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.produto-num{
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ali);margin-bottom:2px;
+}
+.produto-nome{
+  font-family:'Syne',sans-serif;font-size:14px;font-weight:700;
+  color:var(--ink);line-height:1.3;margin-bottom:3px;
+}
+.produto-desc{font-size:12px;color:var(--soft);line-height:1.45;font-weight:300}
+.produto-footer{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.btn-ver{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--ali);color:#fff;
+  font-size:11.5px;font-weight:600;
+  padding:8px 14px;border-radius:8px;text-decoration:none;
+  transition:background .2s;white-space:nowrap;flex-shrink:0;
+}
+.btn-ver:hover{background:var(--ali-d)}
+.btn-ver svg{width:11px;height:11px;fill:currentColor}
+
+/* ── FOOTER ── */
+.footer-note{
+  max-width:480px;margin:0 auto;padding:0 20px 24px;
+  text-align:center;
+}
+.footer-note p{
+  font-size:11px;color:var(--soft);line-height:1.7;
+  border-top:1px solid var(--border);padding-top:20px;
+}
+.footer-note a{color:var(--ali);text-decoration:none}
+
+/* ── TOAST COPIAR ── */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--ink);color:#fff;font-size:13px;font-weight:500;
+  padding:10px 20px;border-radius:50px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  z-index:999;pointer-events:none;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- AVISO -->
+<div class="aviso">
+  🛍️ Sou <strong>influencer oficial do AliExpress</strong> — esta página reúne os produtos que indico para você
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">andrea<span>.</span>picks</div>
+  <span class="nav-tag">Minhas indicações</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-icon">🛍️</div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">AliExpress · Seleção pessoal</div>
+    <h1>Os produtos que eu <em>realmente</em> indico</h1>
+    <p class="hero-sub">Links diretos e cupons de tudo que mostrei no vídeo.</p>
+  </div>
+</div>
+
+<!-- CUPONS -->
+<div class="cupons-section">
+  <p class="cupons-title">Cupons de desconto</p>
+  <div class="cupons-scroll">
+
+    <div class="cupon">
+      <p class="cupon-off">R$180 off</p>
+      <p class="cupon-min">acima de R$1.600</p>
+      <span class="cupon-code" onclick="copiar('IFPSKBPD',this)">
+        IFPSKBPD <span class="cupon-copy">📋</span>
+      </span>
+    </div>
+
+    <div class="cupon">
+      <p class="cupon-off">R$140 off</p>
+      <p class="cupon-min">acima de R$1.200</p>
+      <span class="cupon-code" onclick="copiar('IFPRCX4X',this)">
+        IFPRCX4X <span class="cupon-copy">📋</span>
+      </span>
+    </div>
+
+    <div class="cupon">
+      <p class="cupon-off">R$95 off</p>
+      <p class="cupon-min">acima de R$890</p>
+      <span class="cupon-code" onclick="copiar('IFPLKMB2',this)">
+        IFPLKMB2 <span class="cupon-copy">📋</span>
+      </span>
+    </div>
+
+    <div class="cupon">
+      <p class="cupon-off">R$55 off</p>
+      <p class="cupon-min">acima de R$530</p>
+      <span class="cupon-code" onclick="copiar('IFPKD76B',this)">
+        IFPKD76B <span class="cupon-copy">📋</span>
+      </span>
+    </div>
+
+    <div class="cupon">
+      <p class="cupon-off">R$35 off</p>
+      <p class="cupon-min">acima de R$350</p>
+      <span class="cupon-code" onclick="copiar('IFPTLTOK',this)">
+        IFPTLTOK <span class="cupon-copy">📋</span>
+      </span>
+    </div>
+
+    <div class="cupon">
+      <p class="cupon-off">R$18 off</p>
+      <p class="cupon-min">acima de R$175</p>
+      <span class="cupon-code" onclick="copiar('IFP8TL6Q',this)">
+        IFP8TL6Q <span class="cupon-copy">📋</span>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<!-- DIVISOR -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">12 produtos do vídeo</span>
+  <div class="divider-line"></div>
+</div>
+
+<!-- PRODUTOS -->
+<div class="produtos">
+
+  <!-- Produto 1 -->
+  <div class="produto-card">
+    <div class="produto-foto">
+      <img src="1.jpg" alt="Produto 1">
+    </div>
+    <div class="produto-body">
+      <div>
+        <p class="produto-num">01</p>
+        <p class="produto-nome">Discos para caderno inteligente</p>
+      </div>
+      <div class="produto-footer">
+        <a href="https://s.click.aliexpress.com/e/_c2u96Aer" class="btn-ver" target="_blank">Ver no AliExpress <svg viewBox="0 0 12 12"><path d="M6.5 1h4.5v4.5L9.5 4 7 6.5 5.5 5 8 2.5 6.5 1zM1 6.5l1.5-1.5 2 2-1 3.5-3-3 .5-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Produto 3 -->
+  <div class="produto-card">
+    <div class="produto-foto"><img src="3.jpg" alt="Produto 3"></div>
+    <div class="produto-body">
+      <div>
+        <p class="produto-num">03</p>
+        <p class="produto-nome">Argolas douradas - para encadernação</p>
+        
+      </div>
+      <div class="produto-footer">
+        
+        <a href="https://s.click.aliexpress.com/e/_c4cqTT9D" class="btn-ver" target="_blank">Ver no AliExpress <svg viewBox="0 0 12 12"><path d="M6.5 1h4.5v4.5L9.5 4 7 6.5 5.5 5 8 2.5 6.5 1zM1 6.5l1.5-1.5 2 2-1 3.5-3-3 .5-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Produto 4 -->
+  <div class="produto-card">
+    <div class="produto-foto"><img src="4.jpg" alt="Produto 4"></div>
+    <div class="produto-body">
+      <div>
+        <p class="produto-num">04</p>
+        <p class="produto-nome">Argolas coloridas para encadernação</p>
+        
+      </div>
+      <div class="produto-footer">
+        
+        <a href="https://s.click.aliexpress.com/e/_c3HxuzdZ" class="btn-ver" target="_blank">Ver no AliExpress <svg viewBox="0 0 12 12"><path d="M6.5 1h4.5v4.5L9.5 4 7 6.5 5.5 5 8 2.5 6.5 1zM1 6.5l1.5-1.5 2 2-1 3.5-3-3 .5-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Produto 5 -->
+  
+  <div class="produto-card">
+    <div class="produto-foto"><img src="5.jpg" alt="Produto 6"></div>
+    <div class="produto-body">
+      <div>
+        <p class="produto-num">06</p>
+        <p class="produto-nome">Guilhotina com 4 laminas</p>
+        
+      </div>
+      <div class="produto-footer">
+        
+        <a href="https://s.click.aliexpress.com/e/_c3ZbLJyB" class="btn-ver" target="_blank">Ver no AliExpress <svg viewBox="0 0 12 12"><path d="M6.5 1h4.5v4.5L9.5 4 7 6.5 5.5 5 8 2.5 6.5 1zM1 6.5l1.5-1.5 2 2-1 3.5-3-3 .5-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Produto 6 -->
+  <div class="produto-card">
+    <div class="produto-foto"><img src="6.jpg" alt="Produto 7"></div>
+    <div class="produto-body">
+      <div>
+        <p class="produto-num">07</p>
+        <p class="produto-nome">Gabaritos para encadernação</p>
+        
+      </div>
+      <div class="produto-footer">
+        
+        <a href="https://s.click.aliexpress.com/e/_c4EafLHv" class="btn-ver" target="_blank">Ver no AliExpress <svg viewBox="0 0 12 12"><path d="M6.5 1h4.5v4.5L9.5 4 7 6.5 5.5 5 8 2.5 6.5 1zM1 6.5l1.5-1.5 2 2-1 3.5-3-3 .5-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Produto 7 -->
+  <div class="produto-card">
+    <div class="produto-foto"><img src="7.jpg" alt="Produto 8"></div>
+    <div class="produto-body">
+      <div>
+        <p class="produto-num">08</p>
+        <p class="produto-nome">Espiral click Azul</p>
+        
+      </div>
+      <div class="produto-footer">
+        
+        <a href="https://s.click.aliexpress.com/e/_c3Ih6G15" class="btn-ver" target="_blank">Ver no AliExpress <svg viewBox="0 0 12 12"><path d="M6.5 1h4.5v4.5L9.5 4 7 6.5 5.5 5 8 2.5 6.5 1zM1 6.5l1.5-1.5 2 2-1 3.5-3-3 .5-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Produto 8 -->
+  <div class="produto-card">
+    <div class="produto-foto"><img src="8.jpg" alt="Produto 9"></div>
+    <div class="produto-body">
+      <div>
+        <p class="produto-num">09</p>
+        <p class="produto-nome">Espiral click transparente</p>
+        
+      </div>
+      <div class="produto-footer">
+        
+        <a href="https://s.click.aliexpress.com/e/_c3r4b1rd" class="btn-ver" target="_blank">Ver no AliExpress <svg viewBox="0 0 12 12"><path d="M6.5 1h4.5v4.5L9.5 4 7 6.5 5.5 5 8 2.5 6.5 1zM1 6.5l1.5-1.5 2 2-1 3.5-3-3 .5-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+   
+
+</div>
+
+<!-- NOTA RODAPÉ -->
+<div class="footer-note">
+  <p>
+    Esta página foi criada por <a href="https://instagram.com/andrearamos.art">@andrearamos.art</a> para organizar os links do vídeo.<br>
+    Os cupons são de influencer e podem expirar.<br>
+    Dúvidas? Me chama no Instagram 🤍
+  </p>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Cupom copiado!</div>
+
+<script>
+function copiar(codigo, el) {
+  navigator.clipboard.writeText(codigo).then(() => {
+    const t = document.getElementById('toast');
+    t.textContent = '✓ ' + codigo + ' copiado!';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = codigo;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const t = document.getElementById('toast');
+    t.textContent = '✓ ' + codigo + ' copiado!';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  });
+}
+</script>
+</body>
+</html>
